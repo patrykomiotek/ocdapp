@@ -10,7 +10,7 @@ type Props = {
 // function must return UI fragment
 export const Text = ({ children }: Props) => {
   return (
-    <p>{children}</p>
+    <p className='text-slate-700 font-medium dark:text-white'>{children}</p>
   );
 }
 

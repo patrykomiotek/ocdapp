@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Text } from './components/ui/Text';
 import { Button } from './components/ui/Button';
+import { Generator } from './components/ui/Genrator/Generator';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,7 @@ function App() {
         color="clouds"
         bgColor="emerald"
       />
+      <Generator />
     </>
   )
 }

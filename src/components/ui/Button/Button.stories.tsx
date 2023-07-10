@@ -1,12 +1,34 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from './Button';
 
 const meta = {
-  title: 'Components/Button',
+  title: 'UI/Atoms/Button',
   component: Button,
-} satisfies Meta<typeof Text>;
+  tags: ['autodocs'],
+} satisfies Meta<typeof Button>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const _Text = () => <Button label="" bgColor="" color="" />;
+export const Primary: Story = {
+  args: {
+    label: 'Hello',
+  },
+};
+
+export const Green: Story = {
+  args: {
+    label: 'Hello',
+    color: 'clouds',
+    bgColor: 'emerald',
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    label: 'Hello',
+    color: 'clouds',
+    bgColor: 'midnight',
+  },
+};

@@ -3,8 +3,9 @@ import type { Meta } from '@storybook/react';
 import { Text } from './Text';
 
 const meta = {
-  title: 'Components/Text',
+  title: 'UI/Atoms/Text',
   component: Text,
+  tags: ['autodocs'],
 } satisfies Meta<typeof Text>;
 
 export default meta;
