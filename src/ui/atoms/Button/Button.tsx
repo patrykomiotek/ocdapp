@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 
+import type { ComponentProps } from 'react';
+
 // const colors: Record<string, string> = {
 const colors = {
   turquise: '#1abc9c',
@@ -33,7 +35,7 @@ type Props = {
   bgColor?: ColorType,
 }
 
-export const Button = ({ label, bgColor, color }: Props) => {
+export const Button = ({ label, bgColor, color }: ComponentProps<'button'> & Props) => {
   const _color = color ? colors[color] : '';
   const _bgColor = bgColor ? colors[bgColor] : '';
 

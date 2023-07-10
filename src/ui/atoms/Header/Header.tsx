@@ -1,11 +1,13 @@
+import type { ComponentProps } from 'react';
+
 type Props = {
   children: string
 }
 
-export const Header = ({ children }: Props) => {
+export const Header = ({ children }: ComponentProps<'header'> & Props) => {
   return (
-    <h1 className="text-3xl font-bold underline">
+    <header className="text-3xl font-bold underline">
       {children}
-    </h1>
+    </header>
   );
 }

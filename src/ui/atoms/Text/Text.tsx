@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 type Props = {
   bgColor?: string;
@@ -8,7 +8,7 @@ type Props = {
 
 // create function
 // function must return UI fragment
-export const Text = ({ children }: Props) => {
+export const Text = ({ children }: ComponentProps<'p'> & Props) => {
   return (
     <p className='text-slate-700 font-medium dark:text-white'>{children}</p>
   );
