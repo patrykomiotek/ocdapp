@@ -2,9 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Text } from './components/ui/Text';
-import { Button } from './components/ui/Button';
-import { Generator } from './components/ui/Genrator/Generator';
+import { Generator } from '@components/Genrator';
+import { Text } from '@atoms/Text';
+import { Button } from '@ui/atoms/Button';
 
 function App() {
   const [count, setCount] = useState(0)
