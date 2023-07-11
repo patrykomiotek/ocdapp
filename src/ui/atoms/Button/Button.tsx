@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import type { ComponentProps } from 'react';
+import type { ComponentProps, MouseEvent, MouseEventHandler } from 'react';
 
 // const colors: Record<string, string> = {
 const colors = {
@@ -33,9 +33,12 @@ type Props = {
   label: string;
   color?: ColorType,
   bgColor?: ColorType,
+  onClick?: MouseEventHandler<HTMLButtonElement>
+  // onClick: () => void
 }
 
-export const Button = ({ label, bgColor, color }: ComponentProps<'button'> & Props) => {
+// export const Button = ({ label, bgColor, color }: ComponentProps<'button'> & Props) => {
+export const Button = ({ label, bgColor, color, onClick }: Props) => {
   const _color = color ? colors[color] : '';
   const _bgColor = bgColor ? colors[bgColor] : '';
 
@@ -50,6 +53,7 @@ export const Button = ({ label, bgColor, color }: ComponentProps<'button'> & Pro
 
   return (
     <button
+      onClick={onClick}
       className={classes}
       style={{
         color: _color,
