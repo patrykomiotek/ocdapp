@@ -29,6 +29,11 @@ export const LoginFormRefs = ({ defaultValues, onSubmit }: Props) => {
 
   }, []);
 
+  // useEffect(() => {
+  //   // each time formValues.language
+  //   console.log('Hello!')
+  // }, [window.innerWidth]);
+
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
 
