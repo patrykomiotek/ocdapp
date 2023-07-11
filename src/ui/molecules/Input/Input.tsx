@@ -1,6 +1,7 @@
-import { ChangeEventHandler, ComponentProps, useId } from "react";
+import { ChangeEventHandler, ComponentProps, ComponentPropsWithRef, Ref, forwardRef, useId } from "react";
 
-type Props = ComponentProps<'input'> & {
+type Props = ComponentPropsWithRef<'input'> & {
+// type Props = ComponentProps<'input'> & {
   // id: string;
   // value: string | undefined;
   // type: 'email' | 'password' | 'text';
@@ -9,7 +10,12 @@ type Props = ComponentProps<'input'> & {
   // onChange: ChangeEventHandler<HTMLInputElement>
 }
 
-export const Input = ({ value, type, label, onChange}: Props) => {
+// forwardRef
+
+export const Input = forwardRef((
+  { value, type, label, onChange, ...rest }: Props,
+  ref: Ref<HTMLInputElement>
+) => {
   const id = useId();
   return (
     <>
@@ -18,6 +24,7 @@ export const Input = ({ value, type, label, onChange}: Props) => {
       </label>
       <input
         id={id}
+        ref={ref}
         type={type}
         value={value}
         onChange={onChange}
@@ -26,7 +33,8 @@ export const Input = ({ value, type, label, onChange}: Props) => {
         disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
         invalid:border-pink-500 invalid:text-pink-600
         focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+        {...rest}
       />
     </>
   );
-}
+});

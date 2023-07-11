@@ -1,3 +1,5 @@
+import { Button } from "@ui/atoms";
+import { Input } from "@ui/molecules/Input/Input";
 import { FormEventHandler, useRef, useEffect } from "react";
 
 interface FormState {
@@ -50,34 +52,31 @@ export const LoginFormRefs = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">E-mail</label>
-          <input
-            id="email"
+          <Input
+            ref={emailFieldRef}
+            label="E-mail"
             type="email"
             defaultValue={defaultValues.email}
-            ref={emailFieldRef}
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
+          <Input
+            ref={passwordFieldRef}
+            label="Password"
             type="password"
             defaultValue={defaultValues.password}
-            ref={passwordFieldRef}
           />
         </div>
         <div>
-          <label htmlFor="language">Language</label>
-          <input
-            id="language"
+          <Input
+            ref={languageFieldRef}
+            label="Language"
             type="text"
             defaultValue={defaultValues.language}
-            ref={languageFieldRef}
           />
         </div>
         <div>
-          <button type="submit">Send</button>
+          <Button label="Send" />
         </div>
       </form>
     </div>
