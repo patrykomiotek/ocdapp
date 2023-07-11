@@ -1,4 +1,4 @@
-import { ChangeEventHandler, ComponentProps } from "react";
+import { ChangeEventHandler, ComponentProps, useId } from "react";
 
 type Props = ComponentProps<'input'> & {
   // id: string;
@@ -9,7 +9,8 @@ type Props = ComponentProps<'input'> & {
   // onChange: ChangeEventHandler<HTMLInputElement>
 }
 
-export const Input = ({ id, value, type, label, onChange}: Props) => {
+export const Input = ({ value, type, label, onChange}: Props) => {
+  const id = useId();
   return (
     <>
       <label className="block" htmlFor={id}>

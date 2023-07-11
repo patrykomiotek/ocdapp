@@ -40,7 +40,6 @@ export const LoginFormState = () => {
         <div>
           <Input
             label="E-mail"
-            id="email"
             type="email"
             value={formValues.email}
             onChange={handleChange}
@@ -49,7 +48,6 @@ export const LoginFormState = () => {
         <div>
           <Input
             label="Password"
-            id="password"
             type="password"
             value={formValues.password}
             onChange={handleChange}
@@ -58,7 +56,6 @@ export const LoginFormState = () => {
         <div>
           <Input
             label="Language"
-            id="language"
             type="text"
             value={formValues.language}
             onChange={handleChange}
