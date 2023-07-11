@@ -10,11 +10,26 @@ import { Text } from '@atoms/Text';
 import { Button } from '@ui/atoms/Button';
 import { LoginPage } from '@pages/LoginPage';
 import { HomePage } from '@pages/HomePage';
+import { Page404 } from '@pages/Page404';
+import { DetailsPage } from '@pages/DetailsPage';
 
 enum Paths {
   HOME = '/',
   LOGIN = '/login',
 }
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <HomePage />,
+//   },
+//   {
+//     path: "/login",
+//     element: <LoginPage />,
+//   },
+// ]);
+
+{/* <RouterProvider router={router} /> */}
 
 function App() {
   return (
@@ -25,10 +40,15 @@ function App() {
       </ul>
 
       <Routes>
+        <Route path="details/:foo" element={<DetailsPage />} />
         <Route path={Paths.LOGIN} element={<LoginPage />} />
+          {/* <Route path="abc" element={<LoginPage />} />
+        </Route> */}
         <Route path={Paths.HOME} element={<HomePage />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
+    // {/* <RouterProvider router={router} /> */}
   )
 }
 
