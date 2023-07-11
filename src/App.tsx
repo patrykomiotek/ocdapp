@@ -7,6 +7,7 @@ import { LoginFormState } from '@components/LoginFormState';
 import { LoginFormRefs } from '@components/LoginFormRefs';
 import { Text } from '@atoms/Text';
 import { Button } from '@ui/atoms/Button';
+import { LoginPage } from '@pages/LoginPage';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,7 +24,8 @@ function App() {
       />
       <Generator />
       {/* <LoginFormState /> */}
-      <LoginFormRefs />
+      {/* <LoginFormRefs /> */}
+      <LoginPage />
     </>
   )
 }

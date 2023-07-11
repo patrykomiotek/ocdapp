@@ -1,20 +1,20 @@
-import { Button } from "@ui/atoms";
-import { Input } from "@ui/molecules/Input/Input";
 import { FormEventHandler, useRef, useEffect } from "react";
 
-interface FormState {
+import { Button } from "@ui/atoms";
+import { Input } from "@ui/molecules/Input/Input";
+
+export interface FormState {
   email: string;
   password: string;
   language?: string;
 }
 
-const defaultValues: FormState = {
-  email: 'test@wp.pl',
-  password: 'aaa',
-  language: 'php',
+type Props = {
+  defaultValues: FormState,
+  onSubmit: (data: FormState) => void;
 }
 
-export const LoginFormRefs = () => {
+export const LoginFormRefs = ({ defaultValues, onSubmit }: Props) => {
   // const [refresh, setRefresh] = useState(false);
   const emailFieldRef = useRef<HTMLInputElement>(null);
   const passwordFieldRef = useRef<HTMLInputElement>(null);
@@ -29,24 +29,20 @@ export const LoginFormRefs = () => {
 
   }, []);
 
-  // useEffect(() => {
-  //   // languageFieldRef.current?.style.border = '#ff0000 1px solid';
-  // }, [languageFieldRef.current]);
-
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
 
     // formValues
     console.log('send')
-    if (emailFieldRef.current) {
-      console.log(emailFieldRef.current.value);
-    }
-
-    // {
-    //   email: emailFieldRef.current.value || '',
-    //   password: passwordFieldRef.current.value || '',
-    //   language: languageFieldRef.current.value || '',
+    // if (emailFieldRef.current) {
+    //   console.log(emailFieldRef.current.value);
     // }
+
+    onSubmit({
+      email: emailFieldRef.current?.value || '',
+      password: passwordFieldRef.current?.value || '',
+      language: languageFieldRef.current?.value || '',
+    });
   }
 
   return (
