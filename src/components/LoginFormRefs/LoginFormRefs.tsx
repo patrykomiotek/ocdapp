@@ -15,6 +15,7 @@ const defaultValues: FormState = {
 }
 
 export const LoginFormRefs = () => {
+  // const [refresh, setRefresh] = useState(false);
   const emailFieldRef = useRef<HTMLInputElement>(null);
   const passwordFieldRef = useRef<HTMLInputElement>(null);
   const languageFieldRef = useRef<HTMLInputElement>(null);
@@ -50,6 +51,7 @@ export const LoginFormRefs = () => {
 
   return (
     <div>
+      <p>E-mail: {emailFieldRef.current?.value}</p>
       <form onSubmit={handleSubmit}>
         <div>
           <Input
