@@ -1,3 +1,5 @@
+import { Button } from "@ui/atoms";
+import { Input } from "@ui/molecules/Input/Input";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
 
 interface FormState {
@@ -36,24 +38,26 @@ export const LoginFormState = () => {
       <p>Email: {formValues.email}, password: {formValues.password}</p>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">E-mail</label>
-          <input
+          <Input
+            label="E-mail"
             id="email"
             type="email"
             value={formValues.email}
-            onChange={handleChange} />
+            onChange={handleChange}
+          />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input
+          <Input
+            label="Password"
             id="password"
             type="password"
             value={formValues.password}
-            onChange={handleChange} />
+            onChange={handleChange}
+          />
         </div>
         <div>
-          <label htmlFor="language">Language</label>
-          <input
+          <Input
+            label="Language"
             id="language"
             type="text"
             value={formValues.language}
@@ -61,7 +65,7 @@ export const LoginFormState = () => {
           />
         </div>
         <div>
-          <button type="submit">Send</button>
+          <Button label="Send" />
         </div>
       </form>
     </div>
