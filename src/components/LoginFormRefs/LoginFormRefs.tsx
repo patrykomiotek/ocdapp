@@ -53,7 +53,7 @@ export const LoginFormRefs = ({ defaultValues, onSubmit }: Props) => {
   return (
     <div className="mt-4">
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="mt-2">
           <Input
             ref={emailFieldRef}
             label="E-mail"
@@ -61,7 +61,7 @@ export const LoginFormRefs = ({ defaultValues, onSubmit }: Props) => {
             defaultValue={defaultValues.email}
           />
         </div>
-        <div>
+        <div className="mt-2">
           <Input
             ref={passwordFieldRef}
             label="Password"
@@ -69,7 +69,7 @@ export const LoginFormRefs = ({ defaultValues, onSubmit }: Props) => {
             defaultValue={defaultValues.password}
           />
         </div>
-        <div>
+        <div className="mt-2">
           <Input
             ref={languageFieldRef}
             label="Language"
@@ -77,7 +77,7 @@ export const LoginFormRefs = ({ defaultValues, onSubmit }: Props) => {
             defaultValue={defaultValues.language}
           />
         </div>
-        <div>
+        <div className="mt-2">
           <Button label="Send" />
         </div>
       </form>
