@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Text } from './Text';
 
@@ -9,5 +9,11 @@ const meta = {
 } satisfies Meta<typeof Text>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const _Text = () => <Text>Today is payday</Text>;
+export const _Text: Story = {
+  args: {
+    children: 'Today is payday'
+  }
+};
+

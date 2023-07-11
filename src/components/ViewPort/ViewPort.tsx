@@ -1,8 +1,11 @@
 import { useViewport } from '@hooks/useViewPort';
+import { Text } from '@ui/atoms/Text';
 
-export const Viewport = () => {
+export const ViewPort = () => {
   const size = useViewport();
   return (
-    <div>x: {size.width} y: {size.height}</div>
+    <div>
+      <Text>x: {size.width} y: {size.height}</Text>
+    </div>
   );
 }

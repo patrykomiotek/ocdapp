@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Generator } from './Generator';
 
@@ -9,5 +9,8 @@ const meta = {
 } satisfies Meta<typeof Generator>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const _Generator = () => <Generator />
+export const _Generator: Story = {
+};
+
