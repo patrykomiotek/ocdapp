@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,25 +9,26 @@ import { LoginFormRefs } from '@components/LoginFormRefs';
 import { Text } from '@atoms/Text';
 import { Button } from '@ui/atoms/Button';
 import { LoginPage } from '@pages/LoginPage';
+import { HomePage } from '@pages/HomePage';
+
+enum Paths {
+  HOME = '/',
+  LOGIN = '/login',
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Text bgColor="#ff0000">
-        Today is <span>payday</span>
-      </Text>
-      <Button
-        label="Hello"
-        color="clouds"
-        bgColor="emerald"
-      />
-      <Generator />
-      {/* <LoginFormState /> */}
-      {/* <LoginFormRefs /> */}
-      <LoginPage />
-    </>
+    <BrowserRouter>
+      <ul>
+        <li><Link to={Paths.HOME}>Home</Link></li>
+        <li><Link to={Paths.LOGIN}>Login</Link></li>
+      </ul>
+
+      <Routes>
+        <Route path={Paths.LOGIN} element={<LoginPage />} />
+        <Route path={Paths.HOME} element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
