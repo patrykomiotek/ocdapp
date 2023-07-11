@@ -26,6 +26,10 @@ export const LoginFormRefs = () => {
 
   }, []);
 
+  // useEffect(() => {
+  //   // languageFieldRef.current?.style.border = '#ff0000 1px solid';
+  // }, [languageFieldRef.current]);
+
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
 
