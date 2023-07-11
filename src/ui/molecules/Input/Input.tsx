@@ -38,3 +38,6 @@ export const Input = forwardRef((
     </>
   );
 });
+
+// for forwardRefs, memo, providers
+Input.displayName = 'ForwardRef (Input)';
