@@ -5,20 +5,22 @@ import { Text } from '@ui/atoms/Text';
 import { Button } from '@ui/atoms/Button';
 
 export const Generator = () => {
-  const state = useState(uuidv4());
+  const [id, setId] = useState(uuidv4());
 
   // let id = uuidv4();
 
   const handleClick = () => {
     // id = uuidv4();
-    state[1](uuidv4());
+    // state[1](uuidv4());
+    setId(uuidv4());
 
-    console.log();
+    console.log(id);
   }
 
   return (
     <>
-      <Text>{state[0]}</Text>
+      {/* <Text>{state[0]}</Text> */}
+      <Text>{id}</Text>
       <button onClick={handleClick}>Regenerate</button>
       {/* <Button /> */}
     </>
