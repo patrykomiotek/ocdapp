@@ -51,8 +51,7 @@ export const LoginFormRefs = ({ defaultValues, onSubmit }: Props) => {
   }
 
   return (
-    <div>
-      <p>E-mail: {emailFieldRef.current?.value}</p>
+    <div className="mt-4">
       <form onSubmit={handleSubmit}>
         <div>
           <Input
