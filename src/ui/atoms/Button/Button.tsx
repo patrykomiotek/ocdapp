@@ -33,12 +33,19 @@ type Props = {
   label: string;
   color?: ColorType,
   bgColor?: ColorType,
-  onClick?: MouseEventHandler<HTMLButtonElement>
+  // onClick?: MouseEventHandler<HTMLButtonElement>
   // onClick: () => void
 }
 
-// export const Button = ({ label, bgColor, color }: ComponentProps<'button'> & Props) => {
-export const Button = ({ label, bgColor, color, onClick }: Props) => {
+export const Button = ({
+  label,
+  bgColor,
+  color,
+  onClick
+}: ComponentProps<'button'> & Props) => {
+// }: Props) => {
+// Pick<ComponentProps<'button'>, 'onClick'> & Props) => {
+// export const Button = ({ label, bgColor, color, onClick }: Props) => {
   const _color = color ? colors[color] : '';
   const _bgColor = bgColor ? colors[bgColor] : '';
 
