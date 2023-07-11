@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Generator } from '@components/Genrator';
+import { LoginFormState } from '@components/LoginFormState';
 import { Text } from '@atoms/Text';
 import { Button } from '@ui/atoms/Button';
 
@@ -20,6 +21,7 @@ function App() {
         bgColor="emerald"
       />
       <Generator />
+      <LoginFormState />
     </>
   )
 }
