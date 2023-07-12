@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
 type Props = {
-  children: string
+  children: string | undefined
 }
 
 export const Header = ({ children }: ComponentProps<'header'> & Props) => {

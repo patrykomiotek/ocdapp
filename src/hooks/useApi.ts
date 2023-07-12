@@ -10,7 +10,7 @@ type AppStatus<T> = {
   hasError: false;
 } | {
   // pending
-  data: [];
+  data: undefined;
   isLoading: true;
   hasError: false;
 } | {
@@ -20,13 +20,13 @@ type AppStatus<T> = {
   hasError: true;
 }
 
-interface ApiResponse<T> {
+export interface ApiResponse<T> {
   records: T
 }
 
 export const useApi = <S>(url: string) => {
   const [status, setStatus] = useState<AppStatus<S>>({
-    data: [],
+    data: undefined,
     isLoading: true,
     hasError: false,
   });
@@ -42,10 +42,16 @@ export const useApi = <S>(url: string) => {
         });
 
         // TODO: modify
-        const responseData: ApiResponse<S> = (await response.json()) as ApiResponse<S>;
+        // { records: [Product, Product, Product ] }
+        // { Product }
+
+        // const responseData: ApiResponse<S> = (await response.json()) as ApiResponse<S>;
+        const responseData: S = (await response.json()) as S;
+
+        // const data = responseData.records ? responseData.records : responseData;
 
         setStatus({
-          data: responseData.records,
+          data: responseData,
           isLoading: false,
           hasError: false,
         });
@@ -60,6 +66,7 @@ export const useApi = <S>(url: string) => {
 
   useEffect(() => {
     void loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

@@ -18,6 +18,7 @@ import { ThemeProvider } from '@components/Theme/ThemeContext';
 import { BuggyComponent } from '@components/ErrorBoundary/BuggyComponent';
 import { ErrorBoundary } from '@components/ErrorBoundary/ErrorBoundary';
 import { ProductsPage } from '@pages/ProductsPage';
+import { ProductDetailsPage } from '@pages/ProductDetailsPage';
 
 
 // const router = createBrowserRouter([
@@ -46,6 +47,7 @@ function App() {
 
         <div className="container">
           <Routes>
+            <Route path={`${Paths.PRODUCTS}/:id`} element={<ProductDetailsPage />} />
             <Route path={Paths.PRODUCTS} element={<ProductsPage />} />
             <Route path="details/:foo" element={<DetailsPage />} />
             <Route path={Paths.LOGIN} element={<LoginPage />} />

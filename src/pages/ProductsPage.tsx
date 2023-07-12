@@ -1,6 +1,7 @@
-import { useApi } from "@hooks/useApi";
+import { ApiResponse, useApi } from "@hooks/useApi";
 import { Header } from "@ui/atoms";
-import { useEffect, useState } from "react";
+import { Product } from "@model/Product";
+import { Link } from "@ui/atoms/Link";
 
 // $ curl https://api.airtable.com/v0/appPyGC48mGbBsYNq/products \
 // -H "Authorization: Bearer YOUR_SECRET_API_TOKEN"
@@ -11,21 +12,8 @@ import { useEffect, useState } from "react";
 
 const API_URL = 'https://api.airtable.com/v0/appPyGC48mGbBsYNq/products';
 
-interface Product {
-  id: string;
-  fields: {
-    name: string;
-    price: number;
-    description: string;
-    category_name: string[];
-    quantity: number;
-    create_at: string;
-    updated_at: string;
-  }
-}
-
 export const ProductsPage = () => {
-  const { data, isLoading, hasError } = useApi<Product[]>(API_URL);
+  const { data, isLoading, hasError } = useApi<ApiResponse<Product[]>>(API_URL);
 
   console.log({ data, isLoading, hasError });
 
@@ -35,8 +23,8 @@ export const ProductsPage = () => {
       {isLoading && <p>Loading...</p>}
       {hasError && <p>Oh no, anyway!</p>}
       <div>
-          {data?.map((elem) => {
-            return <div key={elem.id}>{elem.fields.name}</div>
+          {data?.records?.map((elem) => {
+            return <div key={elem.id}><Link to={`/products/${elem.id}`}>{elem.fields.name}</Link></div>
           })}
       </div>
     </div>
