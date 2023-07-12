@@ -93,6 +93,8 @@ export const ProductsPage = () => {
   return (
     <div>
       <Header>Products</Header>
+      {status.isLoading ?? <p>Loading...</p>}
+      {status.hasError ?? <p>Oh no, anyway!</p>}
       <div>
           {status.data?.map((elem) => {
             return <div key={elem.id}>{elem.fields.name}</div>
