@@ -28,8 +28,32 @@ interface ApiResponse {
   records: Product[]
 }
 
+type AppStatus<T> = {
+  // resolved
+  data: T;
+  isLoading: false;
+  hasError: false;
+} | {
+  // pending
+  data: [];
+  isLoading: true;
+  hasError: false;
+} | {
+  // rejected
+  data: undefined;
+  isLoading: false;
+  hasError: true;
+}
+
+const defaultValues: AppStatus<Product[]> = {
+  // pending
+  data: [],
+  isLoading: true,
+  hasError: false,
+}
+
 export const ProductsPage = () => {
-  const [data, setData] = useState<Product[]>([]);
+  const [status, setStatus] = useState<AppStatus<Product[]>>(defaultValues);
 
   const loadData = async () => {
 
@@ -41,7 +65,11 @@ export const ProductsPage = () => {
 
     const responseData: ApiResponse = (await response.json()) as ApiResponse;
     // console.log(data);
-    setData(responseData.records)
+    setStatus({
+      data: responseData.records,
+      isLoading: false,
+      hasError: false,
+    });
 
     // fetch(API_URL, {
     //   headers: {
@@ -66,7 +94,7 @@ export const ProductsPage = () => {
     <div>
       <Header>Products</Header>
       <div>
-          {data.map((elem) => {
+          {status.data?.map((elem) => {
             return <div key={elem.id}>{elem.fields.name}</div>
           })}
       </div>
