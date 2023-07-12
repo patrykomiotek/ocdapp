@@ -1,5 +1,6 @@
 import { AuthInfo } from "@components/Auth/AuthInfo";
 import { Generator } from "@components/Genrator";
+import { ThemeSwitcher } from "@components/Theme/ThemeSwitcher";
 import { Text, Button } from "@ui/atoms";
 import { Dispatch, SetStateAction, createContext, useState } from "react";
 
@@ -27,6 +28,8 @@ export const HomePage = () => {
       }}>
         <AuthInfo />
       </AuthContext.Provider>
+
+      <ThemeSwitcher />
 
       <Text bgColor="#ff0000">
           Today is <span>payday</span>

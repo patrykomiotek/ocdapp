@@ -14,6 +14,7 @@ import { Page404 } from '@pages/Page404';
 import { DetailsPage } from '@pages/DetailsPage';
 import { Paths } from '@consts/router.paths';
 import { Menu } from '@ui/molecules/Menu';
+import { ThemeProvider } from '@components/Theme/ThemeContext';
 
 
 // const router = createBrowserRouter([
@@ -31,20 +32,22 @@ import { Menu } from '@ui/molecules/Menu';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Menu />
+    <ThemeProvider>
+      <BrowserRouter>
+        <Menu />
 
-      <div className="container">
-        <Routes>
-          <Route path="details/:foo" element={<DetailsPage />} />
-          <Route path={Paths.LOGIN} element={<LoginPage />} />
-            {/* <Route path="abc" element={<LoginPage />} />
-          </Route> */}
-          <Route path={Paths.HOME} element={<HomePage />} />
-          <Route path="*" element={<Page404 />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+        <div className="container">
+          <Routes>
+            <Route path="details/:foo" element={<DetailsPage />} />
+            <Route path={Paths.LOGIN} element={<LoginPage />} />
+              {/* <Route path="abc" element={<LoginPage />} />
+            </Route> */}
+            <Route path={Paths.HOME} element={<HomePage />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
     // {/* <RouterProvider router={router} /> */}
   )
 }
