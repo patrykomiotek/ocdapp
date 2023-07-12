@@ -3,7 +3,6 @@ import { Product } from "@model/Product";
 
 const API_URL = 'https://api.airtable.com/v0/appPyGC48mGbBsYNq/products/:id';
 
-
 export const handlers = [
   rest.get(API_URL, (_req, res, ctx) => {
     return res(
