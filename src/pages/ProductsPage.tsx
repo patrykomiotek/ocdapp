@@ -17,16 +17,28 @@ export const ProductsPage = () => {
 
   console.log({ data, isLoading, hasError });
 
+  const renderProduct = () => {
+    if (data) {
+      return (
+        <>
+          {data.records.map((elem) => (
+            <div key={elem.id}>
+              <Link to={`/products/${elem.id}`}>
+                {elem.fields.name}
+              </Link>
+            </div>
+          ))}
+        </>
+      );
+    }
+  }
+
   return (
     <div>
       <Header>Products</Header>
       {isLoading && <p>Loading...</p>}
       {hasError && <p>Oh no, anyway!</p>}
-      <div>
-          {data?.records?.map((elem) => {
-            return <div key={elem.id}><Link to={`/products/${elem.id}`}>{elem.fields.name}</Link></div>
-          })}
-      </div>
+      <div>{renderProduct()}</div>
     </div>
   );
 }
