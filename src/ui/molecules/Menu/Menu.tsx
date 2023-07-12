@@ -13,6 +13,9 @@ export const Menu = () => {
       <li className="mr-3">
         <NavLink to={Paths.PRODUCTS}>Products</NavLink>
       </li>
+      <li className="mr-3">
+        <NavLink to={Paths.CREATE_PRODUCT}>Create product</NavLink>
+      </li>
     </ul>
   );
 }

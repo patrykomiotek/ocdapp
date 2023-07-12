@@ -19,6 +19,7 @@ import { BuggyComponent } from '@components/ErrorBoundary/BuggyComponent';
 import { ErrorBoundary } from '@components/ErrorBoundary/ErrorBoundary';
 import { ProductsPage } from '@pages/ProductsPage';
 import { ProductDetailsPage } from '@pages/ProductDetailsPage';
+import { CreateProductPage } from '@pages/CreateProductPage';
 
 
 // const router = createBrowserRouter([
@@ -47,7 +48,8 @@ function App() {
 
         <div className="container">
           <Routes>
-            <Route path={`${Paths.PRODUCTS}/:id`} element={<ProductDetailsPage />} />
+            <Route path={Paths.CREATE_PRODUCT} element={<CreateProductPage />} />
+            <Route path={Paths.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
             <Route path={Paths.PRODUCTS} element={<ProductsPage />} />
             <Route path="details/:foo" element={<DetailsPage />} />
             <Route path={Paths.LOGIN} element={<LoginPage />} />
