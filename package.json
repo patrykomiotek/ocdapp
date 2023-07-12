@@ -10,11 +10,13 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_c062344aa6cacb5"
+    "chromatic": "npx chromatic --project-token=chpt_c062344aa6cacb5",
+    "msw:update": "npx msw init public --no-save"
   },
   "dependencies": {
     "@types/uuid": "^9.0.2",
     "clsx": "^1.2.1",
+    "msw": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.1",
