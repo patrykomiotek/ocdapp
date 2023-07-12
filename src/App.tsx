@@ -48,8 +48,8 @@ function App() {
 
         <div className="container">
           <Routes>
-            <Route path={Paths.CREATE_PRODUCT} element={<CreateProductPage />} />
             <Route path={Paths.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
+            <Route path={Paths.CREATE_PRODUCT} element={<CreateProductPage />} />
             <Route path={Paths.PRODUCTS} element={<ProductsPage />} />
             <Route path="details/:foo" element={<DetailsPage />} />
             <Route path={Paths.LOGIN} element={<LoginPage />} />
