@@ -1,6 +1,11 @@
+import { useContext } from 'react';
+import { AuthContext } from '@pages/HomePage';
+
+
 export const AuthCredentials = () => {
-  const isLogged = true;
+  const context = useContext(AuthContext);
+
   return (
-    <div>Is user logged? {isLogged ? 'Yes' : 'No'} </div>
+    <div>Is user logged? {context.isLogged ? 'Yes' : 'No'} </div>
   );
 }
