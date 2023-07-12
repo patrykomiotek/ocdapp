@@ -17,6 +17,7 @@ import { Menu } from '@ui/molecules/Menu';
 import { ThemeProvider } from '@components/Theme/ThemeContext';
 import { BuggyComponent } from '@components/ErrorBoundary/BuggyComponent';
 import { ErrorBoundary } from '@components/ErrorBoundary/ErrorBoundary';
+import { ProductsPage } from '@pages/ProductsPage';
 
 
 // const router = createBrowserRouter([
@@ -38,13 +39,14 @@ function App() {
       <BrowserRouter>
         <Menu />
 
-        <ErrorBoundary>
+        {/* <ErrorBoundary> */}
         {/* <ErrorBoundary fallback={<p>!#@$%#%#^</p>}> */}
-          <BuggyComponent />
-        </ErrorBoundary>
+          {/* <BuggyComponent /> */}
+        {/* </ErrorBoundary> */}
 
         <div className="container">
           <Routes>
+            <Route path={Paths.PRODUCTS} element={<ProductsPage />} />
             <Route path="details/:foo" element={<DetailsPage />} />
             <Route path={Paths.LOGIN} element={<LoginPage />} />
               {/* <Route path="abc" element={<LoginPage />} />

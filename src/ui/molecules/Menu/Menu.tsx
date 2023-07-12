@@ -10,6 +10,9 @@ export const Menu = () => {
       <li className="mr-3">
         <NavLink to={Paths.LOGIN}>Login</NavLink>
       </li>
+      <li className="mr-3">
+        <NavLink to={Paths.PRODUCTS}>Products</NavLink>
+      </li>
     </ul>
   );
 }
