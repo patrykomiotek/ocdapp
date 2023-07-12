@@ -1,9 +1,13 @@
 import type { Preview } from '@storybook/react';
-
 import { withThemeByClassName } from '@storybook/addon-styling';
+
+import { initialize, mswLoader } from 'msw-storybook-addon';
 
 /* TODO: update import to your tailwind styles file. If you're using Angular, inject this through your angular.json config instead */
 import '../src/index.css';
+
+// Initialize MSW
+initialize();
 
 const preview: Preview = {
   parameters: {
@@ -21,6 +25,9 @@ const preview: Preview = {
       },
     },
   },
+
+  // Provide the MSW addon loader globally
+  loaders: [mswLoader],
 
   decorators: [
     // Adds theme switching support.
