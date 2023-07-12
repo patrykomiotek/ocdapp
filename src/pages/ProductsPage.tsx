@@ -2,6 +2,7 @@ import { ApiResponse, useApi } from "@hooks/useApi";
 import { Header } from "@ui/atoms";
 import { Product } from "@model/Product";
 import { Link } from "@ui/atoms/Link";
+import { Outlet } from "react-router-dom";
 
 // $ curl https://api.airtable.com/v0/appPyGC48mGbBsYNq/products \
 // -H "Authorization: Bearer YOUR_SECRET_API_TOKEN"
@@ -21,6 +22,7 @@ export const ProductsPage = () => {
     if (data) {
       return (
         <>
+          <Outlet />
           {data.records.map((elem) => (
             <div key={elem.id}>
               <Link to={`/products/${elem.id}`}>
