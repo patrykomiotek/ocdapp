@@ -12,11 +12,9 @@ import { LoginPage } from '@pages/LoginPage';
 import { HomePage } from '@pages/HomePage';
 import { Page404 } from '@pages/Page404';
 import { DetailsPage } from '@pages/DetailsPage';
+import { Paths } from '@consts/router.paths';
+import { Menu } from '@ui/molecules/Menu';
 
-enum Paths {
-  HOME = '/',
-  LOGIN = '/login',
-}
 
 // const router = createBrowserRouter([
 //   {
@@ -34,19 +32,18 @@ enum Paths {
 function App() {
   return (
     <BrowserRouter>
-      <ul>
-        <li><Link to={Paths.HOME}>Home</Link></li>
-        <li><Link to={Paths.LOGIN}>Login</Link></li>
-      </ul>
+      <Menu />
 
-      <Routes>
-        <Route path="details/:foo" element={<DetailsPage />} />
-        <Route path={Paths.LOGIN} element={<LoginPage />} />
-          {/* <Route path="abc" element={<LoginPage />} />
-        </Route> */}
-        <Route path={Paths.HOME} element={<HomePage />} />
-        <Route path="*" element={<Page404 />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="details/:foo" element={<DetailsPage />} />
+          <Route path={Paths.LOGIN} element={<LoginPage />} />
+            {/* <Route path="abc" element={<LoginPage />} />
+          </Route> */}
+          <Route path={Paths.HOME} element={<HomePage />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </div>
     </BrowserRouter>
     // {/* <RouterProvider router={router} /> */}
   )
