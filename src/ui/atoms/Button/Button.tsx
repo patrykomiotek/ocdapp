@@ -33,6 +33,7 @@ type Props = {
   label: string;
   color?: ColorType,
   bgColor?: ColorType,
+  className?: string,
   // onClick?: MouseEventHandler<HTMLButtonElement>
   // onClick: () => void
 }
@@ -41,7 +42,9 @@ export const Button = ({
   label,
   bgColor,
   color,
-  onClick
+  onClick,
+  className,
+  ...rest
 }: ComponentProps<'button'> & Props) => {
 // }: Props) => {
 // Pick<ComponentProps<'button'>, 'onClick'> & Props) => {
@@ -56,6 +59,7 @@ export const Button = ({
     'rounded-full border border-blue-200',
     'hover:text-white hover:bg-blue-600 hover:border-transparent',
     'focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2',
+    className
   );
 
   return (
@@ -66,6 +70,7 @@ export const Button = ({
         color: _color,
         backgroundColor: _bgColor,
       }}
+      {...rest}
     >
       {label}
     </button>
