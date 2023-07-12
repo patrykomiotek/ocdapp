@@ -15,6 +15,8 @@ import { DetailsPage } from '@pages/DetailsPage';
 import { Paths } from '@consts/router.paths';
 import { Menu } from '@ui/molecules/Menu';
 import { ThemeProvider } from '@components/Theme/ThemeContext';
+import { BuggyComponent } from '@components/ErrorBoundary/BuggyComponent';
+import { ErrorBoundary } from '@components/ErrorBoundary/ErrorBoundary';
 
 
 // const router = createBrowserRouter([
@@ -35,6 +37,11 @@ function App() {
     <ThemeProvider>
       <BrowserRouter>
         <Menu />
+
+        <ErrorBoundary>
+        {/* <ErrorBoundary fallback={<p>!#@$%#%#^</p>}> */}
+          <BuggyComponent />
+        </ErrorBoundary>
 
         <div className="container">
           <Routes>
