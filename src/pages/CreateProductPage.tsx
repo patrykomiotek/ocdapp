@@ -16,7 +16,7 @@ export const CreateProductPage = () => {
       const response = await createProduct(data);
 
       // 2️⃣ redirect
-      navigate(response.records[0].id);
+      navigate(`/products/${response.records[0].id}`);
 
     } catch {
       //
