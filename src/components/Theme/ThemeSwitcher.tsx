@@ -1,3 +1,4 @@
+import { Text, Button } from "@ui/atoms";
 import { useThemeContext } from "./ThemeContext"
 
 export const ThemeSwitcher = () => {
@@ -5,8 +6,11 @@ export const ThemeSwitcher = () => {
 
   return (
     <div>
-      <p>Theme: {context.theme}</p>
-      <button onClick={() => context.toggle()}>Toggle</button>
+      <Text>Theme: {context.theme}</Text>
+      <Button
+        label="Toggle"
+        onClick={() => context.toggle()}
+      />
     </div>
   );
 }

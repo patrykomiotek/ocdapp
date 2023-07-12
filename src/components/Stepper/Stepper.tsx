@@ -1,4 +1,4 @@
-import { Button } from '@ui/atoms';
+import { Text, Button } from '@ui/atoms';
 import { useReducer } from 'react';
 
 interface State {
@@ -37,10 +37,10 @@ const increase = () => ({ type: ActionType.INCREASE });
 export const Stepper = () => {
   const [state, dispatch] = useReducer(reducer, initialValues);
   return (
-    <div>
-      <Button label="-" onClick={() => dispatch(decrease())} />
-      {state.count}
-      <Button label="+" onClick={() => dispatch({ type: ActionType.INCREASE })} />
+    <div className="flex">
+      <Button className="rounded-full" label="-" onClick={() => dispatch(decrease())} />
+      <Text className="mx-4 w-[36px] text-center">{state.count}</Text>
+      <Button  className="rounded-full" label="+" onClick={() => dispatch({ type: ActionType.INCREASE })} />
     </div>
   );
 }

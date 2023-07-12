@@ -1,16 +1,30 @@
 import React, { ComponentProps } from 'react';
+import { clsx } from 'clsx';
 
 type Props = {
   bgColor?: string;
   // children: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 // create function
 // function must return UI fragment
-export const Text = ({ children }: ComponentProps<'p'> & Props) => {
+export const Text = ({ children, className, ...rest }: ComponentProps<'p'> & Props) => {
+
+  const classes = clsx(
+    'mt-2 mb-2',
+    'text-slate-700 font-medium',
+    'dark:text-white',
+    className
+  );
+
   return (
-    <p className='mt-2 mb-2 text-slate-700 font-medium dark:text-white'>{children}</p>
+    <p
+      className={classes}
+      {...rest}>
+      {children}
+    </p>
   );
 }
 
