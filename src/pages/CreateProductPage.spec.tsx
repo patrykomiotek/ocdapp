@@ -1,22 +1,32 @@
-import { vi } from 'vitest';
+// import { vi } from 'vitest';
 
 vi.mock('@services/createProduct', () => ({
-  createProduct: vi.fn().mockResolvedValue(() => ({
+  createProduct: vi.fn().mockResolvedValue({
     records: [{
       id: 123
     }]
-  }))
+  })
 }));
 
-import { render, screen, waitFor } from '@testing-library/react';
+const mockedNavigate = vi.fn();
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => mockedNavigate,
+  }
+});
+
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { CreateProductPage } from './CreateProductPage';
-import { fireEvent } from '@storybook/testing-library';
-import { useNavigate } from "react-router-dom";
 
 describe('CreateProductPage component', () => {
-  it('should validate form, create product and display new product', async () => {
+  it('should validate form, create product and navigate to the new page', async () => {
+    // version with userEvent
+    // const user = userEvent.setup();
     render(
       <MemoryRouter initialEntries={['/products/create']}>
         <Routes>
@@ -26,18 +36,19 @@ describe('CreateProductPage component', () => {
     );
 
     fireEvent.click(screen.getByRole('button'));
+    // version with userEvent
+    // await user.click(screen.getByRole('button'));
 
-    await waitFor(() => {
-      expect(screen.getByText(/name is required/i)).toBeInTheDocument();
-    });
-
-    // userEvent.click(screen.getByRole('textbox', { name: /name/i }))
-    // userEvent.type(screen.getByRole('textbox', { name: /name/i }), 'text')
+    expect(screen.getByText(/name is required/i)).toBeInTheDocument();
 
     await userEvent.type(screen.getByRole('textbox', { name: /name/i }), 'Product 1');
     await userEvent.type(screen.getByRole('textbox', { name: /description/i }), 'Lorem ipsum');
     await userEvent.type(screen.getByRole('spinbutton', { name: /price/i }), '1234');
 
+    // version with userEvent
+    // user.type(screen.getByRole('textbox', { name: /name/i }), 'Product ')
+
+    // version with fireEvent
     // fireEvent.change(
     //   screen.getByRole('textbox', { name: /name/i }),
     //   {target: { value: 'Product 1'}}
@@ -51,23 +62,23 @@ describe('CreateProductPage component', () => {
     //   {target: { value: 123 }}
     // );
 
-    fireEvent.click(screen.getByRole('button'));
-
+    // we're using wait for to make sure that "clicking" was finished
+    // component updated it's state and is ready to get mocked data and make redirect
     await waitFor(() => {
-      expect(screen.getByText(/name is required/i)).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button'));
     });
+    // version with userEvent
+    // await user.click(screen.getByRole('button'));
 
-    // TODO: ☑️ mock createProduct function
+    // TODO: mock createProduct function
+    // ☑️ done in at the top of the file
 
-    // TODO: 
-    const spy = vi.spyOn(useNavigate, 'navigate');
+    // TODO: spy if method was called
+    // const spy = vi.spyOn(Object, 'method');
+    // ☑️ done below without spyOn because we don't have
+    // object method but function from hook
 
-    // expect(spy).toHaveBeenCalled();
-    // expect(spy).toHaveBeenCalledWith('/product/123');
-    expect(spy).toHaveBeenCalledTimes(1);
-
-    // TODO: mock product details
-
-    screen.debug();
+    expect(mockedNavigate).toHaveBeenCalledTimes(1);
+    expect(mockedNavigate).toHaveBeenCalledWith('/products/123');
   })
 });

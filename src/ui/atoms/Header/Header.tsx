@@ -6,7 +6,7 @@ type Props = {
 
 export const Header = ({ children }: ComponentProps<'header'> & Props) => {
   return (
-    <header className="text-3xl font-bold">
+    <header className="text-3xl font-bold dark:text-white">
       {children}
     </header>
   );

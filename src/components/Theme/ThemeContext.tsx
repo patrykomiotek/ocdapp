@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export enum Theme {
   LIGHT = 'light',
@@ -13,16 +13,59 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
+const getMode = () => {
+  if (window.matchMedia) {
+    const matchesDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return matchesDarkMode ? Theme.DARK : Theme.LIGHT;
+  }
+  // there may not be window.matchMedia object - eg. in tests
+  return null;
+}
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>(Theme.DARK);
+  // set theme value based on user
+  // 💡 hint: state in this component may be useless ;)
+  // there is only a need to add or remove dark css class
+  // so state was only for workshop purposes
+  const [theme, setTheme] = useState<Theme | null>(() => {
+    return getMode();
+  });
+
+  useEffect(() => {
+    // on the mount of component set additional class
+    const themeMode = getMode();
+    if (themeMode === Theme.DARK) {
+      document.body.classList.add('dark');
+    }
+
+    // add listener for change preferences
+    const handleSchemeChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        document.body.classList.add('dark');
+      } else {
+        document.body.classList.remove('dark');
+      }
+    };
+
+    let query: MediaQueryList;
+    if (themeMode !== null) {
+      query = window.matchMedia('(prefers-color-scheme: dark)');
+      query.addEventListener('change', handleSchemeChange)
+    }
+
+    return () => {
+      query?.removeEventListener('change', handleSchemeChange);
+    }
+  }, []);
 
   const toggle = () => {
     if (theme === Theme.DARK) {
       setTheme(Theme.LIGHT);
-      // document.classList.add('')
+      document.body.classList.remove('dark');
     } else {
       setTheme(Theme.DARK);
+      document.body.classList.add('dark');
     }
   }
 
@@ -33,6 +76,7 @@ export const useTheme = () => {
 
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useThemeContext = () => {
   const context = useContext(ThemeContext);
   if (!context) {

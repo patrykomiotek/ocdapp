@@ -38,7 +38,7 @@ export const LoginFormRefs = ({ defaultValues, onSubmit }: Props) => {
     event.preventDefault();
 
     // formValues
-    console.log('send')
+    // console.log('send')
     // if (emailFieldRef.current) {
     //   console.log(emailFieldRef.current.value);
     // }

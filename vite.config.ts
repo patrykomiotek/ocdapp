@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react-swc';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
@@ -9,5 +9,15 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/tests.setup.ts',
+    deps: {
+      inline: ['vitest-canvas-mock'],
+    },
+    // For this config, check https://github.com/vitest-dev/vitest/issues/740
+    threads: false,
+    environmentOptions: {
+      jsdom: {
+        resources: 'usable',
+      },
+    },
   },
 })

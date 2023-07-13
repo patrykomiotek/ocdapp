@@ -11,7 +11,7 @@ const defaultValues: FormState = {
 export const LoginPage = () => {
 
   const handleSubmit = (data: FormState) => {
-    console.log('LoginPage: ', data);
+    // console.log('LoginPage: ', data);
   }
 
   return (

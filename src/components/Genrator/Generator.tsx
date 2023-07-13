@@ -14,8 +14,6 @@ export const Generator = () => {
     // id = uuidv4();
     // state[1](uuidv4());
     setId(uuidv4());
-
-    console.log(e);
   }
 
   return (

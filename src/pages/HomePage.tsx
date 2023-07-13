@@ -13,7 +13,7 @@ export const HomePage = () => {
 
       <ThemeSwitcher />
 
-      <Text bgColor="#ff0000">
+      <Text>
           Today is <span>payday</span>
       </Text>
       <Button

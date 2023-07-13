@@ -3,8 +3,8 @@ import { clsx } from 'clsx';
 
 type Props = {
   bgColor?: string;
-  children: string;
-  // children: React.ReactNode;
+  // children: string;
+  children: React.ReactNode;
   className?: string;
 }
 

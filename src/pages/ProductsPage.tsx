@@ -16,7 +16,7 @@ const API_URL = 'https://api.airtable.com/v0/appPyGC48mGbBsYNq/products';
 export const ProductsPage = () => {
   const { data, isLoading, hasError } = useApi<ApiResponse<Product[]>>(API_URL);
 
-  console.log({ data, isLoading, hasError });
+  // console.log({ data, isLoading, hasError });
 
   const renderProduct = () => {
     if (data) {

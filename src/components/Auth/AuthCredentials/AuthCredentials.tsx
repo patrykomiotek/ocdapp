@@ -1,5 +1,5 @@
 import { MouseEventHandler} from 'react';
-import { Button } from '@ui/atoms';
+import { Text, Button } from '@ui/atoms';
 import { useAuthContext } from '../AuthContext';
 
 
@@ -12,7 +12,7 @@ export const AuthCredentials = () => {
 
   return (
     <>
-      <div>Is user logged? {context.isLogged ? 'Yes' : 'No'} </div>
+      <Text>Is user logged? {context.isLogged ? 'Yes' : 'No'} </Text>
       <Button label="Change value" onClick={handleClick} />
     </>
   );

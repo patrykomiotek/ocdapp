@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import { Generator } from '.';
 import { fireEvent } from '@storybook/testing-library';
 
@@ -10,7 +10,9 @@ describe('Generator component', () => {
     const uuid = screen.getByText(/[a-z0-9-]{36}/).textContent;
 
     // await userEvent.click(screen.getByRole('button', { name: 'Refresh' }));
-    fireEvent.click(screen.getByRole('button', { name: /regenerate/i }));
+    act(() => {
+      fireEvent.click(screen.getByRole('button', { name: /regenerate/i }));
+    });
 
     await waitFor(() => {
       expect(screen.getByText(/[a-z0-9-]{36}/)).toBeInTheDocument();

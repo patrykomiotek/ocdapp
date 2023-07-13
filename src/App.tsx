@@ -39,11 +39,12 @@ function App() {
 
   const onRender = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
     // Aggregate or log render timings...
-    console.log({ id, phase, actualDuration, baseDuration, startTime, commitTime });
+    // console.log({ id, phase, actualDuration, baseDuration, startTime, commitTime });
   }
 
   return (
     <div>
+      <div className="bg-white dark:bg-slate-900">
       <Profiler id="App" onRender={onRender}>
         <ThemeProvider>
           <BrowserRouter>
@@ -75,6 +76,7 @@ function App() {
           </BrowserRouter>
         </ThemeProvider>
       </Profiler>
+      </div>
     </div>
     // {/* <RouterProvider router={router} /> */}
   )
