@@ -45,6 +45,14 @@ type ThemeProviderProps = {
   children: React.ReactNode;
 }
 
+// render(<ThemeProvider><ThemeSwitcher /></ThemeProvider>)
+// render(<AuthContext.Provider value={{
+//     isLogged,
+//     setIsLogged
+//   }}>
+//   <AuthCredentials />
+// </ThemeProvider>)
+
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const { theme, toggle, setLight, setDark } = useTheme();
   return (
