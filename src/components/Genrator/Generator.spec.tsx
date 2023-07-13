@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { Generator } from '.';
 import { fireEvent } from '@storybook/testing-library';
 
@@ -7,13 +7,18 @@ describe('Generator component', () => {
     render(<Generator />);
 
     // screen.getByTestId('uuid-para')
-    const uuid = screen.getByText(/[a-zA-Z0-9-]{36}/i).textContent;
+    const uuid = screen.getByText(/[a-z0-9-]{36}/).textContent;
 
-    fireEvent.click(screen.getByRole('button', { name: /regenerate/i}));
+    // await userEvent.click(screen.getByRole('button', { name: 'Refresh' }));
+    fireEvent.click(screen.getByRole('button', { name: /regenerate/i }));
 
-    const newUuid = (await screen.findByText(/[a-zA-Z0-9-]{36}/i)).textContent;
+    await waitFor(async () => {
+      expect(screen.getByText(/[a-z0-9-]{36}/)).toBeInTheDocument();
+    });
 
-    expect(uuid).not.toEqual(newUuid);
+    const uuidChanged = (await screen.findByText(/[a-z0-9-]{36}/)).textContent;
+
+    expect(uuid).not.toBe(uuidChanged);
 
   });
 });
