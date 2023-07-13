@@ -22,7 +22,7 @@ export const ProductsPage = () => {
     if (data) {
       return (
         <>
-          <Outlet />
+          {/* <Outlet /> */}
           {data.records.map((elem) => (
             <div key={elem.id}>
               <Link to={`/products/${elem.id}`}>

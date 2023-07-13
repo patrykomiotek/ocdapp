@@ -49,10 +49,14 @@ function App() {
         <div className="container">
           <Routes>
             <Route index path={Paths.HOME} element={<HomePage />} />
+            <Route path={Paths.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
+            <Route path={Paths.CREATE_PRODUCT} element={<CreateProductPage />} />
             <Route path={Paths.PRODUCTS} element={<ProductsPage />}>
+            </Route>
+            {/* <Route path={Paths.PRODUCTS} element={<ProductsPage />}>
               <Route path={Paths.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
               <Route path={Paths.CREATE_PRODUCT} element={<CreateProductPage />} />
-            </Route>
+            </Route> */}
             <Route path="details/:foo" element={<DetailsPage />} />
             <Route path={Paths.LOGIN} element={<LoginPage />} />
               {/* <Route path="abc" element={<LoginPage />} />
