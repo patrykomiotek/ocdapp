@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Profiler, useState } from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -36,37 +36,45 @@ import { CreateProductPage } from '@pages/CreateProductPage';
 {/* <RouterProvider router={router} /> */}
 
 function App() {
+
+  const onRender = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
+    // Aggregate or log render timings...
+    console.log({ id, phase, actualDuration, baseDuration, startTime, commitTime });
+  }
+
   return (
     <div>
-      <ThemeProvider>
-        <BrowserRouter>
-          <Menu />
+      <Profiler id="App" onRender={onRender}>
+        <ThemeProvider>
+          <BrowserRouter>
+            <Menu />
 
-          {/* <ErrorBoundary> */}
-          {/* <ErrorBoundary fallback={<p>!#@$%#%#^</p>}> */}
-            {/* <BuggyComponent /> */}
-          {/* </ErrorBoundary> */}
+            {/* <ErrorBoundary> */}
+            {/* <ErrorBoundary fallback={<p>!#@$%#%#^</p>}> */}
+              {/* <BuggyComponent /> */}
+            {/* </ErrorBoundary> */}
 
-          <div className="container">
-            <Routes>
-              <Route index path={Paths.HOME} element={<HomePage />} />
-              <Route path={Paths.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
-              <Route path={Paths.CREATE_PRODUCT} element={<CreateProductPage />} />
-              <Route path={Paths.PRODUCTS} element={<ProductsPage />}>
-              </Route>
-              {/* <Route path={Paths.PRODUCTS} element={<ProductsPage />}>
+            <div className="container">
+              <Routes>
+                <Route index path={Paths.HOME} element={<HomePage />} />
                 <Route path={Paths.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
                 <Route path={Paths.CREATE_PRODUCT} element={<CreateProductPage />} />
-              </Route> */}
-              <Route path="details/:foo" element={<DetailsPage />} />
-              <Route path={Paths.LOGIN} element={<LoginPage />} />
-                {/* <Route path="abc" element={<LoginPage />} />
-              </Route> */}
-              <Route path="*" element={<Page404 />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </ThemeProvider>
+                <Route path={Paths.PRODUCTS} element={<ProductsPage />}>
+                </Route>
+                {/* <Route path={Paths.PRODUCTS} element={<ProductsPage />}>
+                  <Route path={Paths.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
+                  <Route path={Paths.CREATE_PRODUCT} element={<CreateProductPage />} />
+                </Route> */}
+                <Route path="details/:foo" element={<DetailsPage />} />
+                <Route path={Paths.LOGIN} element={<LoginPage />} />
+                  {/* <Route path="abc" element={<LoginPage />} />
+                </Route> */}
+                <Route path="*" element={<Page404 />} />
+              </Routes>
+            </div>
+          </BrowserRouter>
+        </ThemeProvider>
+      </Profiler>
     </div>
     // {/* <RouterProvider router={router} /> */}
   )

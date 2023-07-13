@@ -1,7 +1,12 @@
 import { FormState } from "@components/CreateProductForm";
 import { Product } from "@model/Product";
 
+// webpack: 
+// create-react-app
+// vite: import.meta.env.VITE_API_URL
+
 const API_URL = 'https://api.airtable.com/v0/appPyGC48mGbBsYNq/products';
+// const API_URL = import.meta.env.VITE_API_URL;
 const API_TOKEN = 'patKsWe7VZFgmCOU9.04bea28c521ca4e0630a424bbedd9a7c3c7c6262b01d4728e34d84064a6bb3c0';
 
 interface ApiResponse {

@@ -9,6 +9,7 @@ export const ProductDetailsPage = () => {
   const params = useParams();
   const { data, isLoading, hasError } = useApi<Product>(`${API_URL}/${params.id!}`);
 
+  // <Loading hidden={true} />
 
   return (
     <div>

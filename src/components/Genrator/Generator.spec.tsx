@@ -12,7 +12,7 @@ describe('Generator component', () => {
     // await userEvent.click(screen.getByRole('button', { name: 'Refresh' }));
     fireEvent.click(screen.getByRole('button', { name: /regenerate/i }));
 
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(screen.getByText(/[a-z0-9-]{36}/)).toBeInTheDocument();
     });
 
