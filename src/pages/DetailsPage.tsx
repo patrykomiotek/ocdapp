@@ -16,7 +16,7 @@ export const DetailsPage = () => {
 
   return (
     <>
-      <Text bgColor="#ff0000">
+      <Text>
         Url param value: {params.foo}
       </Text>
     </>
