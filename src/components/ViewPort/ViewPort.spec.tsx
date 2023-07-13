@@ -31,6 +31,7 @@ describe('ViewPort component', () => {
     // mockedUseViewPort.mockImplementationOnce(() => ({ width: 12, height: 24 }));
     // vite
     vi.mocked(useViewport).mockImplementationOnce(() => ({ width: 12, height: 24 }))
+
     render(<ViewPort />);
 
     expect(screen.getByText(/x: 12 y: 24/i));
