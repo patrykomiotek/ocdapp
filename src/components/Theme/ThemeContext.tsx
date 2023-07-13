@@ -6,7 +6,7 @@ export enum Theme {
 }
 
 interface ThemeContextType {
-  theme: Theme,
+  theme: Theme | null,
   toggle: () => void,
   setLight: () => void,
   setDark: () => void,
