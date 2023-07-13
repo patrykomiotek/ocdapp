@@ -24,6 +24,14 @@ const MemoizedComponent = memo(
   }
 );
 
+  /* const elem1Ref = useRef<HtmlButtonElement>(null);
+    const handleClick = useCallback(() => {
+      const elemId = elem1.current.target['data-element-id']
+    }, []);
+
+    <div>Title <button ref={elem1Ref} data-element-id="3456" onClick={handleClick}>Delete</button></div>*/
+
+
 export const ReactUseMemoWithoutCallback = () => {
   const [isChecked, setIsChecked] = useState(false);
   const toggle = () => setIsChecked((value) => !value);

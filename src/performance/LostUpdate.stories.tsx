@@ -9,8 +9,8 @@ export default {
 const countAction = action('count');
 
 export const ReactRefLostUpdate = () => {
-  const [countA, setCountA] = useState(0)
-  const countB = useRef(0)
+  const [countA, setCountA] = useState(0);
+  const countB = useRef(0);
 
   return <>
     <Text>values: A={countA}, B={countB.current}</Text>

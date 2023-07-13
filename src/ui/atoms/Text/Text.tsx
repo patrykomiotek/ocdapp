@@ -1,16 +1,16 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, memo } from 'react';
 import { clsx } from 'clsx';
 
 type Props = {
   bgColor?: string;
-  // children: string;
-  children: React.ReactNode;
+  children: string;
+  // children: React.ReactNode;
   className?: string;
 }
 
 // create function
 // function must return UI fragment
-export const Text = ({ children, className, ...rest }: ComponentProps<'p'> & Props) => {
+export const Text = memo(({ children, className, ...rest }: ComponentProps<'p'> & Props) => {
 
   const classes = clsx(
     'mt-2 mb-2',
@@ -26,7 +26,8 @@ export const Text = ({ children, className, ...rest }: ComponentProps<'p'> & Pro
       {children}
     </p>
   );
-}
+});
+
 
 // class TextSecond extends React.Component<Props> {
 //   render() {
