@@ -37,7 +37,7 @@ import { CreateProductPage } from '@pages/CreateProductPage';
 
 function App() {
   return (
-    <div className="dark">
+    <div>
       <ThemeProvider>
         <BrowserRouter>
           <Menu />
