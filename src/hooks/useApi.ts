@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// TODO: move token to env vars ;)
 const API_TOKEN = 'patKsWe7VZFgmCOU9.04bea28c521ca4e0630a424bbedd9a7c3c7c6262b01d4728e34d84064a6bb3c0';
 
 // good luck!
