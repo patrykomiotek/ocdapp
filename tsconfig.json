@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["vitest/globals"],
+    "types": ["node", "@testing-library/jest-dom", "vitest/globals"],
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],

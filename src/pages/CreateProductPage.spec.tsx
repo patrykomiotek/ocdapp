@@ -25,8 +25,11 @@ import { CreateProductPage } from './CreateProductPage';
 
 describe('CreateProductPage component', () => {
   it('should validate form, create product and navigate to the new page', async () => {
+    // 0️⃣ version with userEvent
     // version with userEvent
     // const user = userEvent.setup();
+
+    // 1️⃣ render component
     render(
       <MemoryRouter initialEntries={['/products/create']}>
         <Routes>
@@ -35,33 +38,34 @@ describe('CreateProductPage component', () => {
       </MemoryRouter>
     );
 
+    // 2️⃣ click send button - validation should take place
     fireEvent.click(screen.getByRole('button'));
     // version with userEvent
     // await user.click(screen.getByRole('button'));
 
+    // 3️⃣ validation error should appear
     expect(screen.getByText(/name is required/i)).toBeInTheDocument();
 
-    await userEvent.type(screen.getByRole('textbox', { name: /name/i }), 'Product 1');
-    await userEvent.type(screen.getByRole('textbox', { name: /description/i }), 'Lorem ipsum');
-    await userEvent.type(screen.getByRole('spinbutton', { name: /price/i }), '1234');
+    // 4️⃣ fill all fields
+    fireEvent.change(
+      screen.getByRole('textbox', { name: /name/i }),
+      { target: { value: 'Product 1'}}
+    );
+    fireEvent.change(
+      screen.getByRole('textbox', { name: /description/i }),
+      { target: { value: 'Lorem ipsum' }}
+    );
+    fireEvent.change(
+      screen.getByRole('spinbutton', { name: /price/i }),
+      { target: { value: 123 }}
+    );
 
     // version with userEvent
-    // user.type(screen.getByRole('textbox', { name: /name/i }), 'Product ')
+    // await user.type(screen.getByRole('textbox', { name: /name/i }), 'Product 1');
+    // await user.type(screen.getByRole('textbox', { name: /description/i }), 'Lorem ipsum');
+    // await user.type(screen.getByRole('spinbutton', { name: /price/i }), '1234');
 
-    // version with fireEvent
-    // fireEvent.change(
-    //   screen.getByRole('textbox', { name: /name/i }),
-    //   {target: { value: 'Product 1'}}
-    // );
-    // fireEvent.change(
-    //   screen.getByRole('textbox', { name: /description/i }),
-    //   {target: { value: 'Lorem ipsum'}}
-    // );
-    // fireEvent.change(
-    //   screen.getByRole('spinbutton', { name: /price/i }),
-    //   {target: { value: 123 }}
-    // );
-
+    // 5️⃣ send form
     // we're using wait for to make sure that "clicking" was finished
     // component updated it's state and is ready to get mocked data and make redirect
     await waitFor(() => {
@@ -69,6 +73,11 @@ describe('CreateProductPage component', () => {
     });
     // version with userEvent
     // await user.click(screen.getByRole('button'));
+
+    // 6️⃣ validation error should not appear - take note we used queryByText
+    // because getByText or findByText will throw an error when element desn't exits
+    expect(screen.queryByText(/name is required/i)).not.toBeInTheDocument();
+
 
     // TODO: mock createProduct function
     // ☑️ done in at the top of the file
