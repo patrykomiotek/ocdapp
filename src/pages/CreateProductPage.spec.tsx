@@ -47,9 +47,11 @@ describe('CreateProductPage component', () => {
     expect(screen.getByText(/name is required/i)).toBeInTheDocument();
 
     // 4️⃣ fill all fields
+    // TODO: we can write wrapper similar to userEvent:
+    // type(element, value) => fireEvent.change(element, { target: { value }})
     fireEvent.change(
       screen.getByRole('textbox', { name: /name/i }),
-      { target: { value: 'Product 1'}}
+      { target: { value: 'Product 1' }}
     );
     fireEvent.change(
       screen.getByRole('textbox', { name: /description/i }),
