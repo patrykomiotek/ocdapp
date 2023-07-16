@@ -31,7 +31,7 @@ export const ReactKeysIndex = () => {
     </div>)}
     <div className="my-6"></div>
     <Header>id keys</Header>
-    {items.map((elem, index) => <div key={elem.id}>
+    {items.map((elem, _index) => <div key={elem.id}>
       <div>
         <Input
           type="text"

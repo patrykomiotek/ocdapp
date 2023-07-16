@@ -13,6 +13,7 @@ export const getTransfers = () => {
 }
 
 export const _getTransfers = (): Promise<Transfer[]> => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return fetch('/account/transfers')
   .then(res => res.json())
   // .then(data => data.abcdefghij)

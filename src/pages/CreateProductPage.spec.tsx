@@ -19,7 +19,7 @@ vi.mock('react-router-dom', async () => {
 });
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { CreateProductPage } from './CreateProductPage';
 
@@ -61,6 +61,8 @@ describe('CreateProductPage component', () => {
       screen.getByRole('spinbutton', { name: /price/i }),
       { target: { value: 123 }}
     );
+
+    
 
     // version with userEvent
     // await user.type(screen.getByRole('textbox', { name: /name/i }), 'Product 1');

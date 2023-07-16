@@ -1,11 +1,15 @@
 import { screen, render } from '@testing-library/react';
+import { axe } from 'jest-axe';
+// import { axe } from 'vitest-axe';
+
 import { Button } from './Button';
-// import { axe } from 'jest-axe';
-import { axe } from 'vitest-axe';
 
 describe('Button component', () => {
   it('is not so useful test', () => {
-    render(<Button label="Click me" />);
+    // the line below is only needed when callbacks are necessary
+    // and we don't need to provide logic to them
+    const onClick = vi.fn();
+    render(<Button label="Click me" onClick={onClick} />);
 
     expect(screen.getByText('Click me')).toBeInTheDocument();
   })
@@ -14,7 +18,6 @@ describe('Button component', () => {
     const { container } = render(<Button label="Click me" />);
     const results = await axe(container);
 
-    // expect(screen.getByRole('button', { name: /click me/i })).toBeInTheDocument();
     expect(results).toHaveNoViolations();
   })
 });

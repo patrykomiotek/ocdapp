@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import type { ComponentProps, MouseEvent, MouseEventHandler } from 'react';
+import type { ComponentProps } from 'react';
 
 // const colors: Record<string, string> = {
 const colors = {
@@ -24,19 +24,19 @@ const colors = {
   pomegranate: '#c0392b',
   silver: '#bdc3c7',
   asbestos: '#7f8c8d',
-}
+};
 
 // TODO: how to get keys from Record typed variables
 type ColorType = keyof typeof colors;
 
 type Props = {
   label: string;
-  color?: ColorType,
-  bgColor?: ColorType,
-  className?: string,
+  color?: ColorType;
+  bgColor?: ColorType;
+  className?: string;
   // onClick?: MouseEventHandler<HTMLButtonElement>
   // onClick: () => void
-}
+};
 
 export const Button = ({
   label,
@@ -46,9 +46,9 @@ export const Button = ({
   className,
   ...rest
 }: ComponentProps<'button'> & Props) => {
-// }: Props) => {
-// Pick<ComponentProps<'button'>, 'onClick'> & Props) => {
-// export const Button = ({ label, bgColor, color, onClick }: Props) => {
+  // }: Props) => {
+  // Pick<ComponentProps<'button'>, 'onClick'> & Props) => {
+  // export const Button = ({ label, bgColor, color, onClick }: Props) => {
   const _color = color ? colors[color] : '';
   const _bgColor = bgColor ? colors[bgColor] : '';
 
@@ -60,7 +60,7 @@ export const Button = ({
     'hover:text-white hover:bg-blue-600 hover:border-transparent',
     'focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2',
     'dark:text-blue-200',
-    className
+    className,
   );
 
   return (
@@ -76,4 +76,4 @@ export const Button = ({
       {label}
     </button>
   );
-}
+};

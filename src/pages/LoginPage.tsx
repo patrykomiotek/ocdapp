@@ -10,7 +10,7 @@ const defaultValues: FormState = {
 
 export const LoginPage = () => {
 
-  const handleSubmit = (data: FormState) => {
+  const handleSubmit = (_data: FormState) => {
     // console.log('LoginPage: ', data);
   }
 

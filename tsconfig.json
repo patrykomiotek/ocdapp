@@ -30,12 +30,16 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Decorators and class validator */
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

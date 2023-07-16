@@ -9,7 +9,7 @@ export const Generator = () => {
 
   // let id = uuidv4();
 
-  const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (_e) => {
   // const handleClick = (e: MouseEvent) => {
     // id = uuidv4();
     // state[1](uuidv4());

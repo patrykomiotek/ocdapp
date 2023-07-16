@@ -13,7 +13,6 @@ type Story = StoryObj<typeof meta>;
 
 export const _Header: Story = {
   args: {
-    children: 'Today is payday'
-  }
+    children: 'Today is payday',
+  },
 };
-

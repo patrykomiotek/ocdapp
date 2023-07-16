@@ -1,5 +1,4 @@
 import { rest } from 'msw';
-import { Product } from "@model/Product";
 
 const API_URL = 'https://api.airtable.com/v0/appPyGC48mGbBsYNq/products/:id';
 

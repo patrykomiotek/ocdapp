@@ -32,7 +32,7 @@ const reducer = (state: State, action: Action) => {
 }
 
 const decrease = () => ({ type: ActionType.DECREASE });
-const increase = () => ({ type: ActionType.INCREASE });
+// const increase = () => ({ type: ActionType.INCREASE });
 
 export const Stepper = () => {
   const [state, dispatch] = useReducer(reducer, initialValues);
